@@ -4,6 +4,7 @@ fs = require 'fs'
 path = require 'path'
 Promise = require 'bluebird'
 YAML = require 'yamljs'
+debug = require('debug')('loopback-fixtures')
 
 idKey = 'id'
 
@@ -143,4 +144,4 @@ module.exports =
           models[modelData.name].create object
         .then (savedObject) =>
           @savedData[fixture.identifier] = savedObject
-          console.log "[#{modelData.name}] - #{fixture.identifier} imported (id : #{savedObject?[idKey]})"
+          debug "[#{modelData.name}] - #{fixture.identifier} imported (id : #{savedObject?[idKey]})"
